@@ -1,0 +1,21 @@
+form{
+    background-color: pink;
+    padding: 25px;
+}
+
+/* Id */
+#name{
+    height: 25px;
+}
+
+/* class */
+.btn{
+    margin-top: 25px;
+    padding: 10px;
+}
+
+
+/* Attribute */
+label[for="name"]{
+    font-style: italic;
+}
