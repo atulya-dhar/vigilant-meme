@@ -3,15 +3,17 @@ const fruits = document.querySelectorAll('.fruit');
 // For adding new fruits
 const newFruit = document.querySelector('.fruits');
 
-for (let i = 0; i< fruits.length; i++){
-    // const editFruitbtn = `<button class='edit-btn'>Edit</button>`;
-
-    //Adding edit button to previous fruit list
+// Made a function for edit button
+function edit(){
     const editBtn = document.createElement('button');
     editBtn.className = 'edit-btn';
-    const editBtnName = document.createTextNode('Edit');
-    editBtn.appendChild(editBtnName);
-    fruits[i].appendChild(editBtn);
+    editBtn.textContent = 'Edit';
+    return editBtn;
+}
+
+//Adding edit button to previous fruit list
+for (let i = 0; i< fruits.length; i++){
+    fruits[i].appendChild(edit());
 }
 
 /* Adding fruits in the list */
@@ -21,6 +23,7 @@ form.addEventListener('submit', function(event){
     const fruitToAdd = document.getElementById('fruit-to-add');
     // Creating the li element
     const newLi = document.createElement('li');
+    newLi.className = 'fruit';
     
     // Adding the fruit name to the li element
     const liText = document.createTextNode(fruitToAdd.value);
@@ -34,11 +37,7 @@ form.addEventListener('submit', function(event){
     newLi.appendChild(deleteBtn);
 
     // Adding Edit Button to new fruit
-    const newFruitedit = document.createElement('button');
-    newFruitedit.className = 'edit-btn';
-    const newFruitname = document.createTextNode('Edit')
-    newFruitedit.appendChild(newFruitname);
-    newLi.appendChild(newFruitedit);
+    newLi.appendChild(edit());
     // Adding li as the last element of unordered list
     newFruit.appendChild(newLi);
 })
@@ -49,3 +48,5 @@ newFruit.addEventListener('click', function(event){
         newFruit.removeChild(fruitToDelete);
     };
 });
+
+
