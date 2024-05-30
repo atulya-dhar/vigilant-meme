@@ -25,11 +25,11 @@ fruitForm.addEventListener('submit', function (event) {
     const newFruitItem = document.createElement('li');
     newFruitItem.classList.add('fruit');
 
-    const fruitNameSpan = document.createElement('span');
+    const fruitNameSpan = document.createElement('p');
     fruitNameSpan.classList.add('frname');
     fruitNameSpan.textContent = fruitName;
 
-    const fruitDescSpan = document.createElement('span');
+    const fruitDescSpan = document.createElement('p');
     fruitDescSpan.classList.add('frdesc');
     fruitDescSpan.textContent = ` - ${fruitDesc}`;
     fruitDescSpan.style.fontStyle = 'italic';
@@ -59,16 +59,16 @@ filterInput.addEventListener('input', filterItems1);
 function filterItems1(e) {
   // convert text to lowercase
   var text = e.target.value.toLowerCase();
-  // Get lis
+  // Get list
   var items = fruitList.getElementsByTagName('li');
   // Convert to an array
   Array.from(items).forEach(function (item) {
     var itemName = item.firstChild.textContent.toLowerCase();
-    var itemDes = item.childNodes[1].textContent.toLowerCase(); // Use childNodes to get the description text
-
+    var itemDes = item.childNodes[1].innerText.toLowerCase(); // Use childNodes to get the description text
+    console.log(item);
     // Check if either the item name or description contains the filter text
     if (itemName.indexOf(text) !== -1 || itemDes.indexOf(text) !== -1) {
-      item.style.display = 'block';
+      item.style.display = 'flex';
     } else {
       item.style.display = 'none';
     }
